@@ -38,24 +38,16 @@ $arrTwo = [
     ["E", "E", "W", "E", "E", "E"],
 ];
 
-//if(!isset($_SESSION["arrDisplay"])){
-    $_SESSION["arrDisplay"] = [
-        ["F", "F", "F", "F", "F", "F"],
-        ["F", "F", "F", "F", "F", "F"],
-        ["F", "F", "F", "F", "F", "F"],
-        ["F", "F", "F", "F", "F", "F"],
-        ["F", "F", "F", "F", "F", "F"],
-        ["F", "F", "F", "F", "F", "F"],
-    ];
+$displayedArr = [
+    ["F", "F", "F", "F", "F", "F"],
+    ["F", "F", "F", "F", "F", "F"],
+    ["F", "F", "F", "F", "F", "F"],
+    ["F", "F", "F", "F", "F", "F"],
+    ["F", "F", "F", "F", "F", "F"],
+    ["F", "F", "F", "F", "F", "F"],
+];
 
-//}
 
-if (!isset($_SESSION["catPos"])) {
-    $_SESSION["catPos"] = [0, 0];
-    $_SESSION["arrDisplay"][$_SESSION["catPos"][0]][$_SESSION["catPos"][1]] = "C";
-}
-
-echo "<div id='mazeContainer'>";
 
 function showCell($cell){
     switch ($cell) {
@@ -77,20 +69,6 @@ function showCell($cell){
     }
 }
 
-function catPosition($array){
-    $catPos = [];
-    foreach ($array as $y => $row) {
-        foreach($row as $x => $cell){
-            if($cell == "C"){
-                $catPos[] = $x;
-                $catPos[] = $y;
-                return $catPos;
-            }
-        }
-    }
-}
-
-
 function enlight($array, $arrayDisp, $catPos){
     $x = $catPos[0];
     $y = $catPos[1];
@@ -103,15 +81,17 @@ function enlight($array, $arrayDisp, $catPos){
 }
 
 function drawMaze($array){
-    foreach ($array as $y => $row) {
-        echo "<div class='row'>";
-        foreach($row as $x => $cell){
-            echo "<div class='cell' width='96' height='96'>";
-            showCell($cell);
+    echo "<div id='mazeContainer'>";
+        foreach ($array as $y => $row) {
+            echo "<div class='row'>";
+            foreach($row as $x => $cell){
+                echo "<div class='cell' width='96' height='96'>";
+                showCell($cell);
+                echo "</div>";
+            }
             echo "</div>";
         }
-        echo "</div>";
-    }
+    echo "</div>";
 }
 
 function move($arr, $arrDisp, $catPos){
@@ -148,12 +128,21 @@ function move($arr, $arrDisp, $catPos){
     return $arrDisp;
 }
 
-$_SESSION["arrDisplay"] = move($arrOne, $_SESSION["arrDisplay"], $_SESSION["catPos"]);
-$_SESSION["arrDisplay"] = enlight($arrOne, $_SESSION["arrDisplay"], $_SESSION["catPos"]);
-drawMaze($_SESSION["arrDisplay"]);
+// Placing cat for first launch
+if (!isset($_SESSION["catPos"])) {
+    $_SESSION["catPos"] = [0, 0];
+    $displayedArr[$_SESSION["catPos"][0]][$_SESSION["catPos"][1]] = "C";
+}
+
+// Checking move input
+$displayedArr = move($arrOne, $displayedArr, $_SESSION["catPos"]);
+// Removing fog
+$displayedArr = enlight($arrOne, $displayedArr, $_SESSION["catPos"]);
+// Draw the maze
+drawMaze($displayedArr);
 
 ?>
-</div>
+
 <div id='arrowContainer'>
 
 <form method='POST'>
