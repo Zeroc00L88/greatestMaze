@@ -36,7 +36,6 @@ form {
     align-items: center;
 }
 input {
-    padding: 10px;
     font-size: 15px;
     font-weight: bold;
 }
@@ -61,4 +60,41 @@ h1 {
     align-items: center;
     border: 1px solid black;
     max-width: 100%;
+}
+
+#up,
+#left,
+#right,
+#down {
+    background: grey;
+    border: none;
+    border-radius: 50%;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+}
+
+#up:hover,
+#left:hover,
+#right:hover,
+#down:hover {
+    cursor: pointer;
+    background: black;
+}
+
+#up {
+    mask-image: url(../images/up.svg);
+}
+
+#left {
+    mask-image: url(../images/left.svg);
+}
+
+#right {
+    mask-image: url(../images/right.svg);
+}
+
+#down {
+    mask-image: url(../images/down.svg);
 }
