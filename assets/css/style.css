@@ -10,6 +10,9 @@ body {
     gap: 50px;
 }
 header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 15px;
     background: rgba(0, 0, 0, 0.7);
@@ -40,6 +43,7 @@ input {
 h1 {
     display: flex;
     justify-content: center;
+    color: white;
 }
 .row {
     display: flex;
