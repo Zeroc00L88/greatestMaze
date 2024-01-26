@@ -107,3 +107,8 @@ h1 {
 #down {
     mask-image: url(../images/down.svg);
 }
+
+#reload {
+    padding: 30px;
+    font-size: 20px;
+}

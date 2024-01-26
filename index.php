@@ -18,9 +18,6 @@
 <?php
 
     session_start();
-    if (isset($_POST["reload"])){
-        unset($_SESSION);
-    }
 
     // W = wall; F = fog; C = Cat; E = Empty; M = Mouse
     $displayedArr = [
@@ -133,11 +130,12 @@
         }
         return $arrDisp;
     }
-    // Reloading button
+    //Reloading button
     if (isset($_POST["reload"])){
         session_destroy();
+        header("refresh:0");
     }
-    // Chose a random maze
+    //Chose a random maze
     if (!isset($_SESSION["maze"])){
         $_SESSION["maze"] = randArr();
     }
@@ -171,6 +169,8 @@
             <input id='down' class='arrow' type='submit' name='down' value=''>
         </div>
     </div>
+</form>
+<form method='POST'>
     <div>
         <input id='reload' type='submit' name='reload' value='Reload'>
     </div>
