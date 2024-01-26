@@ -16,7 +16,6 @@
 <main>
 
 <?php
-
     session_start();
 
     // W = wall; F = fog; C = Cat; E = Empty; M = Mouse
@@ -29,6 +28,25 @@
         ["F", "F", "F", "F", "F", "F"],
     ];
 
+    function randArrGen($x, $y, $insert){
+        $arr = array_fill(0, $y, array_fill(0, $x, $insert));
+        return $arr;
+    }
+
+    function pathFinder($min, $max, $insert){
+        $arrX = rand($min, $max);
+        $arrY = rand($min, $max);
+        $arr = randArrGen($arrX, $arrY, $insert);
+        $arr[rand(0, $arrY-1)][rand(0, $arrX-1)] = "C";
+        $x = rand(0, $arrX-1);
+        $y = rand(0, $arrY-1);
+        while ($arr[$y][$x] === "C") {
+            $x = rand(0, $arrX-1);
+            $y = rand(0, $arrY-1);
+        }
+        $arr[$y][$x] = "M";
+        print_r($arr);
+    }
 
     function randArr(){
         $arrs = [
@@ -152,7 +170,7 @@
     $displayedArr = enlight($_SESSION["maze"], $displayedArr, $_SESSION["catPos"]);
     // Draw the maze
     drawMaze($displayedArr);
-
+    pathFinder(5, 10, "F");
 ?>
 
 
