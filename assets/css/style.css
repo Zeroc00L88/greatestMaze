@@ -34,7 +34,16 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 }
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 input {
     font-size: 15px;
     font-weight: bold;
