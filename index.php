@@ -23,24 +23,6 @@
     }
 
     // W = wall; F = fog; C = Cat; E = Empty; M = Mouse
-    $arrOne = [
-        ["E", "W", "E", "E", "E", "E"],
-        ["E", "W", "E", "W", "W", "W"],
-        ["E", "E", "E", "W", "M", "W"],
-        ["E", "W", "E", "W", "E", "E"],
-        ["E", "W", "E", "E", "W", "E"],
-        ["E", "E", "W", "E", "E", "E"],
-    ];
-
-    $arrTwo = [
-        ["E", "W", "E", "E", "E", "W"],
-        ["E", "W", "E", "W", "W", "W"],
-        ["E", "E", "E", "W", "M", "W"],
-        ["E", "W", "E", "W", "E", "E"],
-        ["E", "W", "E", "E", "W", "E"],
-        ["E", "E", "W", "E", "E", "E"],
-    ];
-
     $displayedArr = [
         ["F", "F", "F", "F", "F", "F"],
         ["F", "F", "F", "F", "F", "F"],
@@ -154,7 +136,6 @@
     // Reloading button
     if (isset($_POST["reload"])){
         session_destroy();
-        unset($_SESSION);
     }
     // Chose a random maze
     if (!isset($_SESSION["maze"])){
