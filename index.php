@@ -2,16 +2,6 @@
 
 session_start();
 
-// W = wall; F = fog; C = Cat; E = Empty; M = Mouse
-$displayedArr = [
-    ["F", "F", "F", "F", "F", "F"],
-    ["F", "F", "F", "F", "F", "F"],
-    ["F", "F", "F", "F", "F", "F"],
-    ["F", "F", "F", "F", "F", "F"],
-    ["F", "F", "F", "F", "F", "F"],
-    ["F", "F", "F", "F", "F", "F"],
-];
-
 function randArrGen($min, $max)
 {
     // Generate the size of the map
@@ -65,29 +55,6 @@ function randArrGen($min, $max)
         }
     }
 }
-
-// function randArr()
-// {
-//     $arrs = [
-//         [
-//             ["E", "W", "E", "E", "E", "E"],
-//             ["E", "W", "E", "W", "W", "W"],
-//             ["E", "E", "E", "W", "M", "W"],
-//             ["E", "W", "E", "W", "E", "E"],
-//             ["E", "W", "E", "E", "W", "E"],
-//             ["E", "E", "W", "E", "E", "E"],
-//         ],
-//         [
-//             ["E", "E", "E", "E", "E", "W"],
-//             ["W", "W", "E", "W", "W", "W"],
-//             ["E", "E", "E", "W", "M", "E"],
-//             ["E", "W", "W", "W", "W", "E"],
-//             ["E", "W", "E", "E", "E", "E"],
-//             ["E", "E", "E", "W", "W", "W"],
-//         ],
-//     ];
-//     return $arrs[rand(0, 1)];
-// }
 
 function showCell($cell)
 {
@@ -220,7 +187,6 @@ if (!isset($_SESSION["catPos"])) {
     $_SESSION["catPos"] = [];
     $_SESSION["catPos"][0] = $randGen[3];
     $_SESSION["catPos"][1] = $randGen[4];
-    //    $fogArr[$_SESSION["catPos"][0]][$_SESSION["catPos"][1]] = "C";
 }
 
 // Checking move input
